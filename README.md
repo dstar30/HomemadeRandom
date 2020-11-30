@@ -20,57 +20,58 @@ Select a base random number generator from the following:
 
 
 Example:  
-`random_object = Random('desert', seed=10)`
+`RV = Random('desert', seed=10)`
 
 #### Discrete Distributions
 1. Bernoulli  
-`HomemadeRandom.bernoulli(p=0.5)`  
+`RV.bernoulli(p=0.5)`  
 Parameter: (optional) p: floats. 0 <= p <= 1. Probability of a success event
 
 2. Binomial  
-`HomemadeRandom.binomial(n, p)`  
+`RV.binomial(n, p)`  
 Parameter: n: int. n > 0. Total number of trials  
 Parameter: p: floats. 0 <= p <= 1. Probability of a success event  
 
 3. Geometric  
-`HomemadeRandom.geometric(p, mode=0)`  
+`RV.geometric(p, mode=0)`  
 Parameter: p: floats. 0 <= p <= 1. Probability of a success event  
 Parameter: (optional) mode: int. Mode 0 is the fast and direct way. Any other mode will use the other implementation, which was implemented for academic purpose.  
 
 4. Poisson  
-`HomemadeRandom.poisson(lmbda)`  
+`RV.poisson(lmbda)`  
 Parameter: lmbda: floats. lmbda >= 0. Number of arrivals in one time unit  
 
 #### Continuous Distributions
 1. Uniform  
-`HomemadeRandom.uniform(a=0, b=1)`  
+`RV.uniform(a=0, b=1)`  
 Parameter: (optional) a: floats. lower bound of uniform distribution, inclusive  
 Parameter: (optional) b: floats. upper bound of uniform distribution, exclusive  
 
 2. Exponential  
-`HomemadeRandom.exponential(lmbda)`  
+`RV.exponential(lmbda)`  
 Parameter: lmbda: mean time between events  
 
 3. Normal  
-`HomemadeRandom.normal(mu=0, sigma=1.0)`  
+`RV.normal(mu=0, sigma=1.0)`  
 Parameter: (optional) mu: floats. mean of a normal distribution
 Parameter: (optional) sigma: floats. standard deviation of a normal distribution
   
 4. Gamma  
-`HomemadeRandom.gamma(alpha, beta)`  
+`RV.gamma(alpha, beta)`  
 Parameter: alpha: floats. shape parameter  
 Parameter: beta: floats. rate parameter  
 
 5. Weibull  
-`HomemadeRandom.weibull(alpha, beta)`  
+`RV.weibull(alpha, beta)`  
 Parameter: alpha: floats. shape parameter  
 Parameter: beta: floats. scale parameter  
 
 6. Triangular  
-`HomemadeRandom.triangular(low=0.0, high=1.0, mode=None)`  
+`RV.triangular(low=0.0, high=1.0, mode=None)`  
 Parameter: low: floats. lower limit  
 Parameter: high: floats. upper limit  
 Parameter: mode: floats. number with highest probability where a <= c <= b
 
 
-##### See `tests/test.py` for actual usage
+See `tests/test.py` for actual usage or 
+download/clone the project and execute `python test.py` inside the tests directory 

@@ -1,7 +1,8 @@
 from math import log as _log, sqrt as _sqrt, ceil as _ceil, e as _e, sin as _sin, cos as _cos, pi as _pi, exp as _exp
-from HomemadeRandom.base_rv_generators.rv_generators import *
+from .base_rv_generators.rv_generators import *
 
-class Random():
+
+class Random:
     def __init__(self, rng="desert", seed=1):
         """
         instantiate a random number generator
@@ -22,9 +23,9 @@ class Random():
         """
         return self.RNG.next_n()
 
-## -----------------------------------------------------
-## ------------- Continuous Distributions --------------
-## -----------------------------------------------------
+# -----------------------------------------------------
+# ------------- Continuous Distributions --------------
+# -----------------------------------------------------
 
     def uniform(self, a=0, b=1):
         """
@@ -51,9 +52,9 @@ class Random():
         u = self.random()
 
         # F(c) = (c-a)/(b-a)
-        F_c = (mode-low) / (high-low)
+        f_c = (mode-low) / (high-low)
 
-        if u < F_c:
+        if u < f_c:
             return low + _sqrt(u*(mode-low)*(high-low))
         else:
             return high - _sqrt((1-u)*(high-mode)*(high-low))
@@ -66,6 +67,7 @@ class Random():
         """
         u1, u2 = self.random(), self.random()
         z1 = _sqrt(-2.0*_log(u1))*_cos(2*_pi*u2)
+        z2 = _sqrt(-2.0*_log(u1))*_sin(2*_pi*u2)
         return mu + z1 * sigma
 
     def weibull(self, alpha, beta):
@@ -83,6 +85,9 @@ class Random():
         :param beta: rate parameter
         :return: random number under a Gamma distribution
         """
+        if alpha <= 0 or beta <= 0:
+            raise ValueError("alpha and beta must be greater than 0")
+
         if alpha == 1.0:
             # same as expo(beta)
             return -_log(1.0 - self.random()) * beta
@@ -114,28 +119,31 @@ class Random():
             u1 = self.random()
 
             while True:
-                P = b*u1
+                p = b*u1
                 u2 = self.random()
-                if P > 1.0:
-                    y = -_log( (b-P) / alpha)
-                    if u2 <= Y ** (alpha-1):
+                if p > 1.0:
+                    y = -_log((b-p) / alpha)
+                    if u2 <= y ** (alpha-1):
                         break
                 else:
-                    y = P ** (1/alpha)
-                    if u2 <= _exp(-Y):
+                    y = p ** (1/alpha)
+                    if u2 <= _exp(-y):
                         break
             return y * beta
 
-## -----------------------------------------------------
-## ------------- Discrete Distributions ----------------
-## -----------------------------------------------------
+# -----------------------------------------------------
+# ------------- Discrete Distributions ----------------
+# -----------------------------------------------------
 
     def bernoulli(self, p=0.5) -> int:
         """
         :param p: probability of a success event
         :return: 1 if a success event is observed, 0 otherwise
         """
-        return 1 if  self.random() <= p else 0
+        if p < 0 or p > 1:
+            raise ValueError("p must be between 0 and 1, inclusive")
+
+        return 1 if self.random() <= p else 0
 
     def binomial(self, n, p) -> int:
         """
@@ -143,6 +151,11 @@ class Random():
         :param p: probability of success event in a Bernoulli trial
         :return: number of successes in n trials
         """
+        if p < 0 or p > 1:
+            raise ValueError("p must be between 0 and 1, inclusive")
+        if n < 0 or type(n) is not int:
+            raise ValueError("n must be an integer >= 0")
+
         x = 0
         for i in range(n):
             if self.random() < p:
@@ -152,9 +165,13 @@ class Random():
     def geometric(self, p, mode=0) -> int:
         """
         :param p: probability of success event in a Bernoulli trial
-        :param mode: mode 0 is the fast and direct way, mode other than "0" count the number of Bernoulli trials until a success event is observed
+        :param mode: mode 0 is the fast and direct way.
+                    mode other than "0" count the number of Bernoulli trials until a success event is observed
         :return: number of Bernoulli trials needed until a success event is observed
         """
+        if p < 0 or p > 1:
+            raise ValueError("p must be between 0 and 1, inclusive")
+
         if mode == 0:
             return _ceil(_log(1-self.random()) / _log(1-p))
         else:

@@ -1,5 +1,5 @@
-from . import HomemadeRandom
+from .HomemadeRandom import Random
 
 __all__ = [
-    'HomemadeRandom'
+    'Random'
 ]
