@@ -6,7 +6,7 @@ def read(filename):
 
 setuptools.setup(
     name='HomemadeRandom',
-    version='0.1.2',
+    version='0.1.3',
     author = "Daniel Jiang",
     description = "A random number generator built from scratch for ISYE6644 class project",
     long_description=read("README.md") + '\n\n' + read("HISTORY.md"),

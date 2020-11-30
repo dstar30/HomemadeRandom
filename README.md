@@ -9,7 +9,7 @@ This package provides access to a few frequently used discrete and continuous di
 ## API Details and Examples
 
 Start using the library by running  
-`import HomemadeRandom`  
+`from HomemadeRandom import Random`  
 
 Initialize a HomemadeRandom object with two parameters: type of base random number generator and a seed.  
 Select a base random number generator from the following:  
@@ -20,7 +20,7 @@ Select a base random number generator from the following:
 
 
 Example:  
-`random_object = HHomemadeRandom('desert', seed=10)`
+`random_object = Random('desert', seed=10)`
 
 #### Discrete Distributions
 1. Bernoulli  

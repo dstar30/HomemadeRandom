@@ -1,7 +1,7 @@
 from math import log as _log, sqrt as _sqrt, ceil as _ceil, e as _e, sin as _sin, cos as _cos, pi as _pi, exp as _exp
 from HomemadeRandom.base_rv_generators.rv_generators import *
 
-class HomemadeRandom():
+class Random():
     def __init__(self, rng="desert", seed=1):
         """
         instantiate a random number generator
@@ -11,8 +11,6 @@ class HomemadeRandom():
             2. "randu" - bad LCG
         :param seed: default to 0 if not provided
         """
-        super().__init__()
-
         if rng == "desert":
             self.RNG = DesertIsland(seed)
         elif rng == "randu":
