@@ -8,7 +8,7 @@ This package provides access to a few frequently used discrete and continuous di
 
 ## API Details and Examples
 
-Start using the library by doing  
+Start using the library by running  
 `import HomemadeRandom`  
 
 Initialize a HomemadeRandom object with two parameters: type of base random number generator and a seed.  
