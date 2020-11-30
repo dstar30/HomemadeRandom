@@ -3,7 +3,8 @@ This package provides access to a few frequently used discrete and continuous di
 
 
 ## Installation
-### Normal Installation
+### Normal Installation  
+The library is uploaded to PyPI: https://pypi.org/project/HomemadeRandom/  
 `pip install HomemadeRandom`
 
 ## API Details and Examples
@@ -74,4 +75,4 @@ Parameter: mode: floats. number with highest probability where a <= c <= b
 
 
 See `tests/test.py` for actual usage or 
-download/clone the project and execute `python test.py` inside the tests directory 
+download/clone the project and execute `python test.py` inside the tests directory   
