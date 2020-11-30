@@ -1,7 +1,9 @@
 build/
 *egg-info/
+dist/
 
 .vscode
 .idea
+setup.py
 
 **/__pycache__/

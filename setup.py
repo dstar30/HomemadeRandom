@@ -6,7 +6,7 @@ def read(filename):
 
 setuptools.setup(
     name='HomemadeRandom',
-    version='0.1',
+    version='0.1.2',
     author = "Daniel Jiang",
     description = "A random number generator built from scratch for ISYE6644 class project",
     long_description=read("README.md") + '\n\n' + read("HISTORY.md"),
@@ -14,7 +14,6 @@ setuptools.setup(
     license="MIT license",
     url="https://github.com/dstar30/HomemadeRandom",
     packages=setuptools.find_packages(),
-    install_requires=['math'],
     classifiers=[
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",

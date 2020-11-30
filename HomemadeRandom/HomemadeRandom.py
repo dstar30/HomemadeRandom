@@ -1,8 +1,8 @@
 from math import log as _log, sqrt as _sqrt, ceil as _ceil, e as _e, sin as _sin, cos as _cos, pi as _pi, exp as _exp
-from base_rv_generators.rv_generators import *
+from HomemadeRandom.base_rv_generators.rv_generators import *
 
 class HomemadeRandom():
-    def __init__(self, rng="desert", seed=0):
+    def __init__(self, rng="desert", seed=1):
         """
         instantiate a random number generator
 
